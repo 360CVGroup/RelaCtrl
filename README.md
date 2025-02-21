@@ -11,7 +11,7 @@ Ke Cao*, Jing Wang*, Ao Ma*‡, Jiasong Feng, Zhanjie Zhang, Xuanhua He, Shanyua
 
 
 ## 📰 News
-- **[2025.02.21]** We released out paper [RelaCtrl](https://arxiv.org/pdf/2502.14377) and created a project [homepage](https://360cvgroup.github.io/RelaCtrl/).
+- **[2025.02.21]** We have released our paper [RelaCtrl](https://arxiv.org/pdf/2502.14377) and created a dedicated [project homepage](https://360cvgroup.github.io/RelaCtrl/).
 
 
 ## We Are Hiring
