@@ -1,2 +1,1 @@
-# RelaCtrl
-This is the official reproduction of RelaCtrl.
+# This is the project page of RelaCtrl

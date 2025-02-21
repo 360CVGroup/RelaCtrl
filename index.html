@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+    <!-- Replace the content tag with appropriate information -->
+    <!-- <meta name="description" content="DESCRIPTION META TAG"> -->
+    <meta property="og:title"
+        content="RelaCtrl: Relevance-Guided Efficient Control for Diffusion Transformers" />
+    <!-- <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG" /> -->
+    <meta property="og:url" content="https://relactrl.github.io/RelaCtrl/" />
+    <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+    <!-- 
+    <meta property="og:image" content="static/images/banner.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    -->
+
+    <!-- <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+    <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG"> -->
+    <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+    <!-- <meta name="twitter:image" content="static/images/your_twitter_banner_image.png"> -->
+    <!-- <meta name="twitter:card" content="summary_large_image"> -->
+    <!-- Keywords for your paper to be indexed by-->
+    <!-- <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>RelaCtrl: Relevance-Guided Efficient Control for Diffusion Transformers;</title>
+    <!-- <link rel="icon" type="image/x-icon" href="static/images/favicon.ico"> -->
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="static/css/bulma.min.css">
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.2/css/academicons.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+    <script defer src="static/js/fontawesome.all.min.js"></script>
+    <script src="static/js/bulma-carousel.min.js"></script>
+    <script src="static/js/index.js"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.1.1/gradio.js"></script>
+</head>
+
+<body>
+
+
+    <section class="hero banner" style="background-color: transparent;">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title" style="font-size:45px;"><br>RelaCtrl: Relevance-Guided Efficient Control for Diffusion Transformers</h1>
+			<div class="is-size-5 publication-authors">
+                            <!-- Paper authors -->
+                            <span class="author-block">
+                                Ke Cao</a><sup>1,2,3,*</sup>,</span>
+                            <span class="author-block" >
+                                Jing Wang</a><sup>3,4,*</sup>,</span>
+                            <span class="author-block">
+                                Ao Ma</a><sup>3,*,‡</sup>,</span>
+                            <span class="author-block">
+                                Jiasong Feng</a><sup>3</sup>,</span>
+                            <span class="author-block">
+                                Zhanjie Zhang</a><sup>3,5</sup>,</span>
+                            <br> <!-- 在这里换行 -->
+			    <span class="author-block">
+                                Xuanhua He</a><sup>1,2</sup></span>
+			    <span class="author-block">
+                                Shanyuan Liu</a><sup>3</sup>,</span>
+			    <span class="author-block">
+                                Bo Cheng</a><sup>3</sup>,</span>
+			    <span class="author-block">
+                                Dawei Leng</a><sup>3</sup>,</span>
+			    <span class="author-block">
+                                Yuhui Yin</a><sup>3</sup>,</span>
+			    <span class="author-block">
+                                Jie Zhang</a><sup>2,‡</sup>,</span>
+
+                        </div>
+
+			<div class="is-size-5 publication-authors">
+                            <span class="author-block"><small><sup>1</sup>University of Science and Technology of China</small></span>
+                            <span class="author-block"><small><sup>2</sup>Hefei Institutes of Physical Science, Chinese Academy of Sciences</small></span>
+			    <br> <!-- 在这里换行 -->
+			    <span class="author-block"><small><sup>3</sup>360 AI Research</small></span>
+			    <span class="author-block"><small><sup>4</sup>Sun Yat-sen University</small></span>
+			    <span class="author-block"><small><sup>5</sup>Zhejiang University</small></span>
+                            <span class="eql-cntrb"><small><br><sup>*</sup>Equal Contribution.</small></span>
+                            <span class="eql-cntrb"><small><sup>‡</sup>Corresponding Authors.</a></small></span>
+                        </div>
+
+			<div class="column has-text-centered">
+                            <div class="publication-links">
+                                <span class="link-block">
+                                    <a href="https://github.com/360CVGroup/RelaCtrl" target="_blank"
+                                        class="external-link button is-normal is-rounded is-white">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+
+                                <span class="link-block">
+                                    <a href="https://arxiv.org/pdf/2502.14377" target="_blank"
+                                        class="external-link button is-normal is-rounded is-white">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Paper abstract -->
+    <section class="section hero is-light">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            The Diffusion Transformer plays a pivotal role in advancing text-to-image and text-to-video generation, owing primarily to its inherent scalability. However, existing controlled diffusion transformer methods incur significant parameter and computational overheads and suffer from inefficient resource allocation due to their failure to account for the varying relevance of control information across different transformer layers.
+                            To address this, we propose the Relevance-Guided Efficient Controllable Generation framework, <strong>RelaCtrl</strong>, enabling efficient and resource-optimized integration of control signals into the Diffusion Transformer.
+                            First, we evaluate the relevance of each layer in the Diffusion Transformer to the control information by assessing the "removal influence"—i.e., the impact of skipping each control layer on both the quality of generation and the control effectiveness during inference.
+			    Based on the strength of the relevance, we then tailor the positioning, parameter scale, and modeling capacity of the control layers to reduce unnecessary parameters and redundant computations. Additionally, to further improve efficiency, we replace the self-attention and MLP in the commonly used copy block with the carefully designed Two-Dimensional Shuffle Mixer (<strong>TDSM</strong>), enabling efficient implementation of both the token mixer and channel mixer.
+			    Both qualitative and quantitative experimental results demonstrate that our approach achieves superior performance with only 15% of the parameters and computational complexity compared to PixArt-<em>δ</em>.
+			</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Image carousel -->
+        <section class="hero is-small">
+            <div class="hero-body">
+                <div class="container">
+                    <div class="columns is-centered has-text-centered">
+                    <h2 class="title is-3">Some Visualizations of RelaCtrl</h2>
+                    </div>
+                    <div id="results-carousel" class="carousel results-carousel">
+			<div class="card">
+                            <div class="card-image">
+                                <img src="static/images/carousel/paint_0.png" alt="paint_0" />
+                            </div>
+                            <div class="card-content has-text-centered">(paint style) A woman with flowing dark hair and red lips.</div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="static/images/carousel/paint_1.png" alt="paint_1" />
+                            </div>
+                            <div class="card-content has-text-centered">(paint style) A man in a black suit, white T-shirt, and black tie, eyes blazing.</div>
+                        </div>
+			<div class="card">
+                            <div class="card-image">
+                                <img src="static/images/carousel/real_0.png" alt="real_0" />
+                            </div>
+                            <div class="card-content has-text-centered">(realistic style) A lone tree with sprawling roots anchors a sweeping desert vista under a gradient sunset sky.</div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="static/images/carousel/real_1.png" alt="real_1" />
+                            </div>
+                            <div class="card-content has-text-centered">(realistic style) A young woman with blonde hair and a denim jacket is sitting in an interior space.</div>
+                        </div>
+			<div class="card">
+                            <div class="card-image">
+                                <img src="static/images/carousel/oil_0.png" alt="oil_0" />
+                            </div>
+                            <div class="card-content has-text-centered">(oil style) A stern-faced man with a beard, wearing a white shirt and brown jacket.</div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="static/images/carousel/oil_1.png" alt="oil_1" />
+                            </div>
+                            <div class="card-content has-text-centered">(oil style) A red-haired woman wearing a brown jacket and green scarf stands in front of a decorated Christmas tree.</div>
+                        </div>
+			<div class="card">
+                            <div class="card-image">
+                                <img src="static/images/carousel/gufeng_0.png" alt="gufeng_0" />
+                            </div>
+                            <div class="card-content has-text-centered">(gufeng style) A contemplative young girl in a traditional garment stands amidst a futuristic cityscape.</div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="static/images/carousel/gufeng_1.png" alt="gufeng_1" />
+                            </div>
+                            <div class="card-content has-text-centered">(gufeng style) Watercolor painting of a mountain village at sunset.</div>
+                        </div>
+			<div class="card">
+                            <div class="card-image">
+                                <img src="static/images/carousel/pixel_0.png" alt="pixel_0" />
+                            </div>
+                            <div class="card-content has-text-centered">(pixel style) At sunset, a traditional Chinese pagoda and a modern skyscraper coexist by the river.  A gondola with two silhouetted figures drifts on the calm water under an orange sky.</div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="static/images/carousel/pixel_1.png" alt="pixel_1" />
+                            </div>
+                            <div class="card-content has-text-centered">(pixel style) Pixelated mountains, a river winding through lush greenery under a sky scattered with clouds.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End image carousel -->
+    <section class="hero is-small">
+        <div class="hero-body">
+            
+            <div class="container is-max-desktop">
+                <div class="columns is-centered has-text-centered">
+                <h2 class="title is-3">Method</h2></div>
+                <img src="static/images/method_arch.png" alt="method" />
+                <p>The overall architecture of RelaCtrl. Control block locations are prioritized based on the ControlNet Relevance Score, ranked from highest to lowest. The direct duplication of the main branch in the original ControlNet is replaced with the carefully designed Reference-Guided Lightweight control block. Additionally, the Two-Dimensional Shuffle Mixer effectively reduces model parameters and computational overhead while preserving performance. 
+                </p>
+                
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero is-small">
+        <div class="hero-body">
+            
+            <div class="container is-max-desktop">
+                <div class="columns is-centered has-text-centered">
+                <h2 class="title is-3">Results of Varying Conditions</h2></div>
+                <img src="static/images/exp_visual.png" alt="efficiency" />
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero is-small">
+        <div class="hero-body">
+
+            <div class="container is-max-desktop">
+                <div class="columns is-centered has-text-centered">
+                <h2 class="title is-3">Compared with SOTA Methods</h2></div>
+                <img src="static/images/exp_compare.png" alt="efficiency" />
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero is-small">
+        <div class="hero-body">
+
+            <div class="container is-max-desktop">
+                <div class="columns is-centered has-text-centered">
+                <h2 class="title is-3">Quantitative Result Compared with SOTA Methods</h2></div>
+                <img src="static/images/quantities.png" alt="method" />
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero is-small">
+        <div class="hero-body">
+
+            <div class="container is-max-desktop">
+                <div class="columns is-centered has-text-centered">
+                <h2 class="title is-3">Efficiency Compared with SOTA Methods</h2></div>
+                <img src="static/images/efficiency.png" alt="method" />
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered has-text-centered"><h2 class="title is-3"> More Visualizations of RelaCtrl</h2></div>
+
+                <div class="columns is-centered has-text-centered"><h2 class="title is-4"> Canny to Realistic</h2></div>
+		<div class="columns is-centered has-text-centered">
+                    <div class="column">
+                        <div id="t2i-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/realistics/canny_1.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample1">
+                                <img loading="lazy" src="static/images/realistics/canny_1.png" alt="sample7" />
+                            </div>
+                            <div class="card-content">The woman in the image is smiling warmly, wearing a fur-lined coat, with voluminous, curly hair.</div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div id="t2i-sample2" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/realistics/canny_gen_1.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample2">
+                                <img loading="lazy" src="static/images/realistics/canny_gen_1.png" alt="sample7" />
+                            </div>
+                        </div>
+                    </div>
+
+		    <div class="column">
+                        <div id="t2i-sample3" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/realistics/canny_2.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample3">
+                                <img loading="lazy" src="static/images/realistics/canny_2.png" alt="sample7" />
+                            </div>
+                            <div class="card-content">A solitary, leafless tree stands in a vast desert with a glowing sunset behind it, casting long shadows.</div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div id="t2i-sample4" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/realistics/canny_gen_2.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample4">
+                                <img loading="lazy" src="static/images/realistics/canny_gen_2.png" alt="sample7" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+		<div class="columns is-centered has-text-centered">
+                    <div class="column">
+                        <div id="t2i-sample5" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/realistics/canny_3.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample5">
+                                <img loading="lazy" src="static/images/realistics/canny_3.png" alt="sample7" />
+                            </div>
+                            <div class="card-content">A festive scene with decorated cupcakes and gingerbread houses, set against a warm, cozy Christmas tree background.</div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div id="t2i-sample6" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/realistics/canny_gen_3.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample6">
+                                <img loading="lazy" src="static/images/realistics/canny_gen_3.png" alt="sample7" />
+                            </div>
+                        </div>
+                    </div>
+
+		    <div class="column">
+                        <div id="t2i-sample7" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/realistics/canny_4.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample7">
+                                <img loading="lazy" src="static/images/realistics/canny_4.png" alt="sample7" />
+                            </div>
+                            <div class="card-content">A bright, modern dining room with a wooden table, elegant chairs, a bouquet of flowers, and large windows.</div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div id="t2i-sample8" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/realistics/canny_gen_4.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample8">
+                                <img loading="lazy" src="static/images/realistics/canny_gen_4.png" alt="sample7" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+		<div class="columns is-centered has-text-centered"><h2 class="title is-4"> Depth to Realistic</h2></div>
+		<div class="columns is-centered has-text-centered">
+		    <div class="column">
+			<div id="t2i-sample9" class="modal">
+			    <div class="modal-background"></div>
+			    <div class="modal-content">
+				<img loading="lazy" src="static/images/realistics/depth_4.png" />
+			    </div>
+			    <button class="modal-close is-large" aria-label="close"></button>
+			</div>
+			<div class="card">
+			    <div class="card-image js-modal-trigger" data-target="t2i-sample9">
+				<img loading="lazy" src="static/images/realistics/depth_4.png" alt="sample7" />
+			    </div>
+			    <div class="card-content">A cozy dining area with a table set for two, featuring a bouquet of red flowers and lush plants by large windows.</div>
+			</div>
+		    </div>
+
+		    <div class="column">
+			<div id="t2i-sample10" class="modal">
+			    <div class="modal-background"></div>
+			    <div class="modal-content">
+				<img loading="lazy" src="static/images/realistics/depth_gen_4.png" />
+			    </div>
+			    <button class="modal-close is-large" aria-label="close"></button>
+			</div>
+			<div class="card">
+			    <div class="card-image js-modal-trigger" data-target="t2i-sample10">
+				<img loading="lazy" src="static/images/realistics/depth_gen_4.png" alt="sample7" />
+			    </div>
+			</div>
+		    </div>
+
+		    <div class="column">
+                        <div id="t2i-sample11" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/realistics/depth_5.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample11">
+                                <img loading="lazy" src="static/images/realistics/depth_5.png" alt="sample7" />
+                            </div>
+			    <div class="card-content">A young woman with short, platinum blonde hair and a casual expression, wearing a denim jacket in soft lighting.</div>
+                        </div>
+                    </div>
+
+		    <div class="column">
+                        <div id="t2i-sample12" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/realistics/depth_gen_5.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample12">
+                                <img loading="lazy" src="static/images/realistics/depth_gen_5.png" alt="sample7" />
+                            </div>
+                        </div>
+                    </div>
+		</div>
+
+		<div class="columns is-centered has-text-centered">
+		    <div class="column">
+                        <div id="t2i-sample13" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/realistics/depth_6.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample13">
+                                <img loading="lazy" src="static/images/realistics/depth_6.png" alt="sample7" />
+                            </div>
+                            <div class="card-content">A close-up of a man with a strong beard, intense eyes, and slightly tousled dark hair, exuding confidence.</div>
+                        </div>
+                    </div>
+
+		    <div class="column">
+                        <div id="t2i-sample14" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/realistics/depth_gen_6.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample14">
+                                <img loading="lazy" src="static/images/realistics/depth_gen_6.png" alt="sample7" />
+                            </div>
+                        </div>
+                    </div>
+
+		    <div class="column">
+                        <div id="t2i-sample15" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/realistics/depth_7.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample15">
+                                <img loading="lazy" src="static/images/realistics/depth_7.png" alt="sample7" />
+                            </div>
+                            <div class="card-content">A couple stands hand in hand, facing the sun in a serene, golden-hued landscape, surrounded by trees and nature.</div>
+                        </div>
+                    </div>
+
+		    <div class="column">
+                        <div id="t2i-sample16" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/realistics/depth_gen_7.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="t2i-sample16">
+                                <img loading="lazy" src="static/images/realistics/depth_gen_7.png" alt="sample7" />
+                            </div>
+                        </div>
+                    </div>
+		</div>
+
+		<div class="columns is-centered has-text-centered"><h2 class="title is-4"> Hed to Realistic</h2></div>
+		<div class="columns is-centered has-text-centered">
+		    <div class="column">
+			<div id="t2i-sample17" class="modal">
+			    <div class="modal-background"></div>
+			    <div class="modal-content">
+				<img loading="lazy" src="static/images/realistics/hed_7.png" />
+			    </div>
+			    <button class="modal-close is-large" aria-label="close"></button>
+			</div>
+			<div class="card">
+			    <div class="card-image js-modal-trigger" data-target="t2i-sample17">
+				<img loading="lazy" src="static/images/realistics/hed_7.png" alt="sample7" />
+			    </div>
+			    <div class="card-content">A couple walks down a sunlit dirt path, surrounded by lush trees, bathed in the warm glow of the setting sun.</div>
+			</div>
+		    </div>
+
+		    <div class="column">
+			<div id="t2i-sample18" class="modal">
+			    <div class="modal-background"></div>
+			    <div class="modal-content">
+				<img loading="lazy" src="static/images/realistics/hed_gen_7.png" />
+			    </div>
+			    <button class="modal-close is-large" aria-label="close"></button>
+			</div>
+			<div class="card">
+			    <div class="card-image js-modal-trigger" data-target="t2i-sample18">
+				<img loading="lazy" src="static/images/realistics/hed_gen_7.png" alt="sample7" />
+			    </div>
+			</div>
+		    </div>
+
+		    <div class="column">
+			<div id="hed_8" class="modal">
+			    <div class="modal-background"></div>
+			    <div class="modal-content">
+				<img loading="lazy" src="static/images/realistics/hed_8.png" />
+			    </div>
+			    <button class="modal-close is-large" aria-label="close"></button>
+			</div>
+			<div class="card">
+			    <div class="card-image js-modal-trigger" data-target="hed_8">
+				<img loading="lazy" src="static/images/realistics/hed_8.png" alt="sample7" />
+			    </div>
+			    <div class="card-content">A happy golden retriever stands in a grassy field, panting with a joyful expression, surrounded by lush greenery.</div>
+			</div>
+		    </div>
+
+		    <div class="column">
+			<div id="hed_gen_8" class="modal">
+			    <div class="modal-background"></div>
+			    <div class="modal-content">
+				<img loading="lazy" src="static/images/realistics/hed_gen_8.png" />
+			    </div>
+			    <button class="modal-close is-large" aria-label="close"></button>
+			</div>
+			<div class="card">
+			    <div class="card-image js-modal-trigger" data-target="hed_gen_8">
+				<img loading="lazy" src="static/images/realistics/hed_gen_8.png" alt="sample7" />
+			    </div>
+			</div>
+		    </div>
+		</div>
+
+		<div class="columns is-centered has-text-centered">
+		    <div class="column">
+			<div id="hed_9" class="modal">
+			    <div class="modal-background"></div>
+			    <div class="modal-content">
+				<img loading="lazy" src="static/images/realistics/hed_9.png" />
+			    </div>
+			    <button class="modal-close is-large" aria-label="close"></button>
+			</div>
+			<div class="card">
+			    <div class="card-image js-modal-trigger" data-target="hed_9">
+				<img loading="lazy" src="static/images/realistics/hed_9.png" alt="sample7" />
+			    </div>
+			    <div class="card-content">A majestic snow-capped mountain range under dramatic skies, with sharp peaks and deep valleys, showcasing winter's grandeur.</div>
+			</div>
+		    </div>
+
+		    <div class="column">
+			<div id="hed_gen_9" class="modal">
+			    <div class="modal-background"></div>
+			    <div class="modal-content">
+				<img loading="lazy" src="static/images/realistics/hed_gen_9.png" />
+			    </div>
+			    <button class="modal-close is-large" aria-label="close"></button>
+			</div>
+			<div class="card">
+			    <div class="card-image js-modal-trigger" data-target="hed_gen_9">
+				<img loading="lazy" src="static/images/realistics/hed_gen_9.png" alt="sample7" />
+			    </div>
+			</div>
+		    </div>
+
+		    <div class="column">
+			<div id="hed_10" class="modal">
+			    <div class="modal-background"></div>
+			    <div class="modal-content">
+				<img loading="lazy" src="static/images/realistics/hed_10.png" />
+			    </div>
+			    <button class="modal-close is-large" aria-label="close"></button>
+			</div>
+			<div class="card">
+			    <div class="card-image js-modal-trigger" data-target="hed_10">
+				<img loading="lazy" src="static/images/realistics/hed_10.png" alt="sample7" />
+			    </div>
+			    <div class="card-content">A bride smiles radiantly, adorned with a floral crown of white roses and a veil, exuding joy on her special day.</div>
+			</div>
+		    </div>
+
+		    <div class="column">
+			<div id="hed_gen_10" class="modal">
+			    <div class="modal-background"></div>
+			    <div class="modal-content">
+				<img loading="lazy" src="static/images/realistics/hed_gen_10.png" />
+			    </div>
+			    <button class="modal-close is-large" aria-label="close"></button>
+			</div>
+			<div class="card">
+			    <div class="card-image js-modal-trigger" data-target="hed_gen_10">
+				<img loading="lazy" src="static/images/realistics/hed_gen_10.png" alt="sample7" />
+			    </div>
+			</div>
+		    </div>
+		</div>
+
+		<div class="columns is-centered has-text-centered"><h2 class="title is-4"> Seg to Realistic</h2></div>
+		<div class="columns is-centered has-text-centered">
+		    <div class="column">
+			<div id="seg_9" class="modal">
+			    <div class="modal-background"></div>
+			    <div class="modal-content">
+				<img loading="lazy" src="static/images/realistics/seg_9.png" />
+			    </div>
+			    <button class="modal-close is-large" aria-label="close"></button>
+			</div>
+			<div class="card">
+			    <div class="card-image js-modal-trigger" data-target="seg_9">
+				<img loading="lazy" src="static/images/realistics/seg_9.png" alt="sample7" />
+			    </div>
+			    <div class="card-content">This is the same image of a snow-capped mountain range under dramatic skies, with sharp peaks and deep valleys.</div>
+			</div>
+		    </div>
+
+		    <div class="column">
+			<div id="seg_gen_9" class="modal">
+			    <div class="modal-background"></div>
+			    <div class="modal-content">
+				<img loading="lazy" src="static/images/realistics/seg_gen_9.png" />
+			    </div>
+			    <button class="modal-close is-large" aria-label="close"></button>
+			</div>
+			<div class="card">
+			    <div class="card-image js-modal-trigger" data-target="seg_gen_9">
+				<img loading="lazy" src="static/images/realistics/seg_gen_9.png" alt="sample7" />
+			    </div>
+			</div>
+		    </div>
+
+		    <div class="column">
+			<div id="seg_10" class="modal">
+			    <div class="modal-background"></div>
+			    <div class="modal-content">
+				<img loading="lazy" src="static/images/realistics/seg_10.png" />
+			    </div>
+			    <button class="modal-close is-large" aria-label="close"></button>
+			</div>
+			<div class="card">
+			    <div class="card-image js-modal-trigger" data-target="seg_10">
+				<img loading="lazy" src="static/images/realistics/seg_10.png" alt="sample7" />
+			    </div>
+			    <div class="card-content">This is the same beautiful image of a bride with a floral crown, smiling joyfully on her wedding day.</div>
+			</div>
+		    </div>
+
+		    <div class="column">
+			<div id="seg_gen_10" class="modal">
+			    <div class="modal-background"></div>
+			    <div class="modal-content">
+				<img loading="lazy" src="static/images/realistics/seg_gen_10.png" />
+			    </div>
+			    <button class="modal-close is-large" aria-label="close"></button>
+			</div>
+			<div class="card">
+			    <div class="card-image js-modal-trigger" data-target="seg_gen_10">
+				<img loading="lazy" src="static/images/realistics/seg_gen_10.png" alt="sample7" />
+			    </div>
+			</div>
+		    </div>
+		</div>
+		
+		<div class="columns is-centered has-text-centered">
+		    <div class="column">
+			<div id="seg_11" class="modal">
+			    <div class="modal-background"></div>
+			    <div class="modal-content">
+				<img loading="lazy" src="static/images/realistics/seg_11.png" />
+			    </div>
+			    <button class="modal-close is-large" aria-label="close"></button>
+			</div>
+			<div class="card">
+			    <div class="card-image js-modal-trigger" data-target="seg_11">
+				<img loading="lazy" src="static/images/realistics/seg_11.png" alt="sample7" />
+			    </div>
+			    <div class="card-content">A man in a formal uniform, with medals on his chest, gazes thoughtfully to the side in a black-and-white portrait.</div>
+			</div>
+		    </div>
+
+		    <div class="column">
+			<div id="seg_gen_11" class="modal">
+			    <div class="modal-background"></div>
+			    <div class="modal-content">
+				<img loading="lazy" src="static/images/realistics/seg_gen_11.png" />
+			    </div>
+			    <button class="modal-close is-large" aria-label="close"></button>
+			</div>
+			<div class="card">
+			    <div class="card-image js-modal-trigger" data-target="seg_gen_11">
+				<img loading="lazy" src="static/images/realistics/seg_gen_11.png" alt="sample7" />
+			    </div>
+			</div>
+		    </div>
+
+		    <div class="column">
+			<div id="seg_12" class="modal">
+			    <div class="modal-background"></div>
+			    <div class="modal-content">
+				<img loading="lazy" src="static/images/realistics/seg_12.png" />
+			    </div>
+			    <button class="modal-close is-large" aria-label="close"></button>
+			</div>
+			<div class="card">
+			    <div class="card-image js-modal-trigger" data-target="seg_12">
+				<img loading="lazy" src="static/images/realistics/seg_12.png" alt="sample7" />
+			    </div>
+			    <div class="card-content">A hiker stands atop a rocky outcrop, gazing at a vast, misty mountain landscape below, with a winding path visible.</div>
+			</div>
+		    </div>
+
+		    <div class="column">
+			<div id="seg_gen_12" class="modal">
+			    <div class="modal-background"></div>
+			    <div class="modal-content">
+				<img loading="lazy" src="static/images/realistics/seg_gen_12.png" />
+			    </div>
+			    <button class="modal-close is-large" aria-label="close"></button>
+			</div>
+			<div class="card">
+			    <div class="card-image js-modal-trigger" data-target="seg_gen_12">
+				<img loading="lazy" src="static/images/realistics/seg_gen_12.png" alt="sample7" />
+			    </div>
+			</div>
+		    </div>
+		</div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered has-text-centered"><h2 class="title is-3"> RelaCtrl with Different Community Models</h2></div>
+	    	<div class="columns is-centered has-text-centered"><h2 class="title is-4"> Canny to Paint</h2></div>
+                <div class="columns is-centered has-text-centered">
+                    <div class="column">
+                        <div id="style_canny_2" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/canny_2.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_canny_2">
+                                <img loading="lazy" src="static/images/styles/canny_2.png" alt="sample7" />
+                            </div>
+                            <div class="card-content">A woman dressed in a colorful kimono with floral patterns stands gracefully, surrounded by painted lotus flowers in soft watercolors.</div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div id="style_canny_paint_2" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/canny_paint_2.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_canny_paint_2">
+                                <img loading="lazy" src="static/images/styles/canny_paint_2.png" alt="sample7" />
+                            </div>
+                        </div>
+                    </div>
+
+		    <div class="column">
+                        <div id="style_canny_3" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/canny_3.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_canny_3">
+                                <img loading="lazy" src="static/images/styles/canny_3.png" alt="sample7" />
+                            </div>
+                            <div class="card-content">A woman with striking green eyes, wearing a red scarf, stands against a soft watercolor background with vibrant red splashes.</div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div id="style_canny_paint_3" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/canny_paint_3.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_canny_paint_3">
+                                <img loading="lazy" src="static/images/styles/canny_paint_3.png" alt="sample7" />
+                            </div>
+                        </div>
+                    </div>
+
+		    <div class="column">
+                        <div id="style_canny_5" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/canny_5.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_canny_5">
+                                <img loading="lazy" src="static/images/styles/canny_5.png" alt="sample7" />
+                            </div>
+                            <div class="card-content">A solitary figure walks through a city street at sunset, with warm light reflecting off the wet pavement and tall buildings.</div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div id="style_canny_paint_5" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/canny_paint_5.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_canny_paint_5">
+                                <img loading="lazy" src="static/images/styles/canny_paint_5.png" alt="sample7" />
+                            </div>
+                        </div>
+                    </div>
+
+		</div>
+		
+		<div class="columns is-centered has-text-centered"><h2 class="title is-4"> Depth to Oil</h2></div>
+		<div class="columns is-centered has-text-centered">
+                    <div class="column">
+                        <div id="style_depth_1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/depth_1.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_depth_1">
+                                <img loading="lazy" src="static/images/styles/depth_1.png" alt="sample7" />
+                            </div>
+                            <div class="card-content">A rugged man with a thick beard and intense expression, dressed in a brown coat, painted in bold, dramatic oil strokes.</div>
+                        </div>
+                    </div>
+
+		    <div class="column">
+                        <div id="style_depth_oil_1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/depth_oil_1.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_depth_oil_1">
+                                <img loading="lazy" src="static/images/styles/depth_oil_1.png" alt="sample7" />
+                            </div>
+                        </div>
+                    </div>
+
+		    <div class="column">
+                        <div id="style_depth_3" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/depth_3.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_depth_3">
+                                <img loading="lazy" src="static/images/styles/depth_3.png" alt="sample7" />
+                            </div>
+                            <div class="card-content">A woman with dramatic makeup and red face paint, featuring a star motif on her forehead, set against an intense, dark oil painting background.</div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div id="style_depth_oil_3" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/depth_oil_3.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_depth_oil_3">
+                                <img loading="lazy" src="static/images/styles/depth_oil_3.png" alt="sample7" />
+                            </div>
+                        </div>
+                    </div>
+
+		    <div class="column">
+                        <div id="style_depth_6" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/depth_6.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_depth_6">
+                                <img loading="lazy" src="static/images/styles/depth_6.png" alt="sample7" />
+                            </div>
+                            <div class="card-content">A woman with platinum blonde hair and striking blue eyes gazes intensely at the viewer, her features highlighted in an oil painting style.</div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div id="style_depth_oil_6" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/depth_oil_6.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_depth_oil_6">
+                                <img loading="lazy" src="static/images/styles/depth_oil_6.png" alt="sample7" />
+                            </div>
+                        </div>
+                    </div>
+
+		</div>
+
+		<div class="columns is-centered has-text-centered"><h2 class="title is-4"> Hed to Gufeng</h2></div>
+		<div class="columns is-centered has-text-centered">
+		    <div class="column">
+                        <div id="style_hed_2" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/hed_2.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_hed_2">
+                                <img loading="lazy" src="static/images/styles/hed_2.png" alt="sample7" />
+                            </div>
+                            <div class="card-content">A serene watercolor painting of a lush landscape, featuring multiple cascading waterfalls surrounded by vibrant green foliage and trees.</div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div id="style_hed_gufeng_2" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/hed_gufeng_2.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_hed_gufeng_2">
+                                <img loading="lazy" src="static/images/styles/hed_gufeng_2.png" alt="sample7" />
+                            </div>
+                        </div>
+                    </div>
+
+		    <div class="column">
+                        <div id="style_hed_4" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/hed_4.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_hed_4">
+                                <img loading="lazy" src="static/images/styles/hed_4.png" alt="sample7" />
+                            </div>
+                            <div class="card-content">A watercolor scene depicting a bustling waterfront with traditional boats and a city skyline featuring a prominent clock tower in the distance.</div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div id="style_hed_gufeng_4" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/hed_gufeng_4.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_hed_gufeng_4">
+                                <img loading="lazy" src="static/images/styles/hed_gufeng_4.png" alt="sample7" />
+                            </div>
+                        </div>
+                    </div>
+
+		    <div class="column">
+                        <div id="style_hed_7" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/hed_7.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_hed_7">
+                                <img loading="lazy" src="static/images/styles/hed_7.png" alt="sample7" />
+                            </div>
+                            <div class="card-content">A watercolor painting of a woman wearing a long coat, standing near a window, with soft tones and a serene expression.</div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div id="style_hed_gufeng_7" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/hed_gufeng_7.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_hed_gufeng_7">
+                                <img loading="lazy" src="static/images/styles/hed_gufeng_7.png" alt="sample7" />
+                            </div>
+                        </div>
+                    </div>
+		</div>
+
+		<div class="columns is-centered has-text-centered"><h2 class="title is-4"> Seg to Pixel</h2></div>
+		<div class="columns is-centered has-text-centered">
+		    <div class="column">
+                        <div id="style_seg_0" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/seg_0.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_seg_0">
+                                <img loading="lazy" src="static/images/styles/seg_0.png" alt="sample7" />
+                            </div>
+                            <div class="card-content">A pixelated depiction of a scenic town with castles, a bridge, and boats on a river, creating a nostalgic, retro vibe.</div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div id="style_seg_pixel_0" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/seg_pixel_0.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_seg_pixel_0">
+                                <img loading="lazy" src="static/images/styles/seg_pixel_0.png" alt="sample7" />
+                            </div>
+                        </div>
+                    </div>
+
+		    <div class="column">
+                        <div id="style_seg_1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/seg_1.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_seg_1">
+                                <img loading="lazy" src="static/images/styles/seg_1.png" alt="sample7" />
+                            </div>
+                            <div class="card-content">A pixelated view of a grand palace with golden domes, reflecting in the water, surrounded by lush greenery and flying birds.</div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div id="style_seg_pixel_1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/seg_pixel_1.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_seg_pixel_1">
+                                <img loading="lazy" src="static/images/styles/seg_pixel_1.png" alt="sample7" />
+                            </div>
+                        </div>
+                    </div>
+
+		    <div class="column">
+                        <div id="style_seg_2" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/seg_2.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_seg_2">
+                                <img loading="lazy" src="static/images/styles/seg_2.png" alt="sample7" />
+                            </div>
+                            <div class="card-content">A pixelated winter scene featuring a church surrounded by snow-covered trees, with towering mountains in the background.</div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div id="style_seg_pixel_2" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/styles/seg_pixel_2.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="style_seg_pixel_2">
+                                <img loading="lazy" src="static/images/styles/seg_pixel_2.png" alt="sample7" />
+                            </div>
+                        </div>
+                    </div>
+		</div>
+	    </div>
+        </div>
+    </section>
+
+
+    <!-- <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered has-text-centered"><h2 class="title is-3"> More cases of the Qihoo-T2MV</h2></div>
+                <div class="columns is-centered has-text-centered">
+                    
+                    <div class="column">
+                        <div id="multivideo-sample1" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/qihoo-t2mv/coming.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="multivideo-sample1">
+                                <img loading="lazy" src="static/images/qihoo-t2mv/coming.png" alt="sample1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="columns is-centered has-text-centered">
+                    <div class="column">
+                        <div id="modal-sample7" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/qihoo-t2i/7.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="modal-sample7">
+                                <img loading="lazy" src="static/images/qihoo-t2i/7.png" alt="sample7" />
+                            </div>
+                            <div class="card-content">knolling of a drawing tools for painter</div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div id="modal-sample8" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/qihoo-t2i/8.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="modal-sample8">
+                                <img loading="lazy" src="static/images/qihoo-t2i/8.png" alt="sample8">
+                            </div>
+                            <div class="card-content">Van Gogh painting of a teacup on the desk</div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div id="modal-sample8" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <img loading="lazy" src="static/images/qihoo-t2i/8.png" />
+                            </div>
+                            <button class="modal-close is-large" aria-label="close"></button>
+                        </div>
+                        <div class="card">
+                            <div class="card-image js-modal-trigger" data-target="modal-sample8">
+                                <img loading="lazy" src="static/images/qihoo-t2i/8.png" alt="sample8">
+                            </div>
+                            <div class="card-content">Van Gogh painting of a teacup on the desk</div>
+                        </div>
+                    </div>
+                </div> -->
+
+            </div>
+        </div>
+    </section> -->
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p>
+                            This page was built using a template derived from the <a
+                            href="https://nerfies.github.io" target="_blank">Nerfies</a> project page. The website content is licensed <a rel="license"
+                                href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY NC SA 4.0</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Statcounter tracking code -->
+
+    <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+</body>
+
+</html>
