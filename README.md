@@ -4,7 +4,7 @@ This is the official reproduction of [RelaCtrl](https://360cvgroup.github.io/Rel
 
 **[RelaCtrl: Relevance-Guided Efficient Control for Diffusion Transformers](https://arxiv.org/pdf/2502.14377)**
 </br>
-Ke Cao*, Jing Wang*, Ao Ma*‡, Jiasong Feng, Zhanjie Zhang, Xuanhua He, Shanyuan Liu, Bo Cheng, Dawei Leng, Yuhui Yin, Jie Zhang‡(*Equal Contribution, ‡Corresponding Authors)
+Ke Cao*, Jing Wang*, Ao Ma*, Jiasong Feng, Zhanjie Zhang, Xuanhua He, Shanyuan Liu, Bo Cheng, Dawei Leng‡, Yuhui Yin, Jie Zhang‡(*Equal Contribution, ‡Corresponding Authors)
 </br>
 [![arXiv](https://img.shields.io/badge/arXiv-2502.14377-b31b1b.svg)](https://arxiv.org/pdf/2502.14377)
 [![Project Page](https://img.shields.io/badge/Project-Website-green)](https://360cvgroup.github.io/RelaCtrl/)
