@@ -11,8 +11,8 @@ Ke Cao*, Jing Wang*, Ao Ma*, Jiasong Feng, Zhanjie Zhang, Xuanhua He, Shanyuan L
 
 
 ## 📰 News
+- **[2025.04.07]** We released the inference pipeline and some weights of RelaCtrl-PixArt.
 - **[2025.02.21]** We have released our paper [RelaCtrl](https://arxiv.org/pdf/2502.14377) and created a dedicated [project homepage](https://360cvgroup.github.io/RelaCtrl/).
-- **[2025.03.21]** We released the inference pipeline and some weights of RelaCtrl-PixArt.
 
 
 ## We Are Hiring
