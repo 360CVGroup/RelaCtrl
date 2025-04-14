@@ -49,7 +49,7 @@ Download the required conditional weights for RelaCtrl:
 | Model         | Parameters | Download Link |
 |--------------|------------|----------------------------------------------------------------|
 | **RelaCtrl_PixArt_Canny**       | 45M       | [Canny](https://huggingface.co/qihoo360/RelaCtrl/tree/main) |
-| **RelaCtrl_PixArt_Canny_Style**       | 45M       | [Style](https://huggingface.co/qihoo360/RelaCtrl/) |
+| **RelaCtrl_PixArt_Canny_Style**       | 45M       | [Style](https://huggingface.co/qihoo360/RelaCtrl/tree/main) |
 
 
 ### Inference with Conditions
