@@ -202,7 +202,8 @@ def get_args():
     parser.add_argument('--num_sampling_steps', default=20, type=int)
     parser.add_argument('--cfg_scale', default=4.5, type=int)
     parser.add_argument('--image_size', default=1024, type=int)
-    parser.add_argument('--model_path', default='/home/jovyan/maao-data-cephfs-2/dataspace/caoke/PixArt-alpha/output_relactrl/release/relactrl_pixart_canny_1024.pth', type=str)
+    parser.add_argument('--model_path', default='/home/jovyan/maao-data-cephfs-2/dataspace/caoke/PixArt-alpha/output_relactrl/release/relactrl_pixart_canny_1024.pth', type=str) # relactrl_pixart_canny
+    # parser.add_argument('--model_path', default='/home/jovyan/maao-data-cephfs-2/dataspace/caoke/PixArt-alpha/output_relactrl/release/relactrl_pixart_canny_1024_style.pth', type=str) # relactrl_pixart_canny_style
     parser.add_argument('--tokenizer_path', default='/home/jovyan/maao-data-cephfs-0/dataspace/maao/projects/Common/models/PixArt-alpha/PixArt-XL-2-1024-MS/vae', type=str)
     parser.add_argument('--llm_model', default='t5', type=str)
     parser.add_argument('--sampling_algo', default='dpm-solver', type=str, choices=['iddpm', 'dpm-solver', 'sa-solver'])
@@ -221,6 +222,16 @@ if __name__ == '__main__':
     prompt = "a large, well-maintained estate with a red brick driveway and a beautifully landscaped yard. The property is surrounded by a forest, giving it a serene and peaceful atmosphere. The house is situated in a neighborhood with other homes nearby, creating a sense of community.In the yard, there are several potted plants, adding to the lush greenery of the area. A bench is also present, providing a place for relaxation and enjoyment of the surroundings. The overall scene is picturesque and inviting, making it an ideal location for a family home."
     image_path = "/home/jovyan/maao-data-cephfs-2/workspace/caoke/projects/RelaCtrl/resources/demos/reference_images/example1.png"
     
+    # style examples
+    # prompt = "gufeng_A tranquil mountain range with snow-capped peaks and their clear reflection in a calm lake, surrounded by trees, creates a stunning, serene landscape."
+    # image_path = "/home/jovyan/maao-data-cephfs-2/workspace/caoke/projects/RelaCtrl/resources/demos/reference_images/style1.png"
+    # prompt = "oil_A man stands in a moonlit snowy field with a scythe, gazing at the moon, amidst trees, exuding mystery."
+    # image_path = "/home/jovyan/maao-data-cephfs-2/workspace/caoke/projects/RelaCtrl/resources/demos/reference_images/style2.png"
+    # prompt = "paint_A vintage car drives down a dirt road, dusting up as it passes, center stage with two people observing on the sides, evoking nostalgia."
+    # image_path = "/home/jovyan/maao-data-cephfs-2/workspace/caoke/projects/RelaCtrl/resources/demos/reference_images/style3.png"
+    # prompt = "3d_The painting is a close-up portrait of a bearded man with a mustache, focusing on his facial features in a blurred background."
+    # image_path = "/home/jovyan/maao-data-cephfs-2/workspace/caoke/projects/RelaCtrl/resources/demos/reference_images/style4.png"
+
     refer_img_vae = image2vae_canny(image_path, device)
     output_img, c_vis, prompt_show = generate_img(prompt=prompt, given_image_npz=refer_img_vae, seed=123)
     output_img = Image.fromarray(output_img)
