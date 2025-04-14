@@ -56,7 +56,7 @@ Download the required conditional weights for RelaCtrl:
 ``` python
 python pipeline/test_relactrl_pixart_1024.py diffusion/configs/config_relactrl_pixart_1024.py
 ```
-Prompt examples for different models can be found in the [prompt_exampeles.md](resources/demos/prompts_examples).
+Prompt examples for different models can be found in the [prompt_exampeles](resources/demos/prompts_examples).
 
 ### Acknowledgment  
 The PixArt model weights are derived from the open-source project [PixArt-alpha](https://github.com/PixArt-alpha/PixArt-alpha).  
