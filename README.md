@@ -1,6 +1,6 @@
 # RelaCtrl
 
-This is the official reproduction of [RelaCtrl](https://360cvgroup.github.io/RelaCtrl/), which represents an efficient controlnet-like architecture designed for DiTs.
+This is the official reproduction of [RelaCtrl](https://360cvgroup.github.io/RelaCtrl/), which represents an efficient controlnet-like architecture designed for DiTs. 
 
 **[RelaCtrl: Relevance-Guided Efficient Control for Diffusion Transformers](https://arxiv.org/pdf/2502.14377)**
 </br>
