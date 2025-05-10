@@ -15,9 +15,6 @@ Ke Cao*, Jing Wang*, Ao Ma*, Jiasong Feng, Zhanjie Zhang, Xuanhua He, Shanyuan L
 - **[2025.02.21]** We have released our paper [RelaCtrl](https://arxiv.org/pdf/2502.14377) and created a dedicated [project homepage](https://360cvgroup.github.io/RelaCtrl/).
 
 
-## We Are Hiring
-We are seeking academic interns in the AIGC field. If interested, please send your resume to [maao@360.cn](mailto:maao@360.cn).
-
 ## Inference with RealCtrl on PixArt
 ### Dependencies and Installation
 ``` python
